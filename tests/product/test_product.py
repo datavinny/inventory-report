@@ -22,4 +22,11 @@ def test_cria_produto():
       EXPIRATION_DATE,
       SERIE_NUMBER,
       INSTRUCTIONS)
+    assert type(test_product.id) == int
+    assert type(test_product.nome_do_produto) == str
+    assert type(test_product.nome_da_empresa) == str
+    assert type(test_product.data_de_fabricacao) == str
+    assert type(test_product.data_de_validade) == str
+    assert type(test_product.numero_de_serie) == int
+    assert type(test_product.instrucoes_de_armazenamento) == str
     assert str(test_product.__repr__) == mock_res
