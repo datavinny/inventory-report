@@ -29,11 +29,8 @@ class Inventory:
             elif path.endswith("json"):
                 reports = json.load(file)
             else:
-                result_xml = xmltodict.parse(file.read())
-                reports = result_xml["dataset"]["record"]
-            result = []
+                reports = xmltodict.parse(file.read())["dataset"]["record"]
             if type == "simples":
-                result = SimpleReport().generate(reports)
+                return SimpleReport().generate(reports)
             elif type == "completo":
-                result = CompleteReport().generate(reports)
-        return result
+                return CompleteReport().generate(reports)
