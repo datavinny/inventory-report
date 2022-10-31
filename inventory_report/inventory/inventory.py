@@ -20,8 +20,13 @@ class Inventory:
             List of rows as dicts
         """
         with open(path, encoding="utf-8") as file:
-            reports = list(csv.DictReader(file, delimiter=",", quotechar='"'))\
-               or json.load(file)
+            reports = []
+            if path.split(".", 1)[1] == "csv":
+                reports = (
+                  list(csv.DictReader(file, delimiter=",", quotechar='"'))
+                )
+            elif path.split(".", 1)[1] == "json":
+                reports = json.load(file)
             result = []
             if type == "simples":
                 result = SimpleReport().generate(reports)
