@@ -1,4 +1,5 @@
 import csv
+import json
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
@@ -19,7 +20,8 @@ class Inventory:
             List of rows as dicts
         """
         with open(path, encoding="utf-8") as file:
-            reports = list(csv.DictReader(file, delimiter=",", quotechar='"'))
+            reports = list(csv.DictReader(file, delimiter=",", quotechar='"'))\
+               or json.load(file)
             result = []
             if type == "simples":
                 result = SimpleReport().generate(reports)
