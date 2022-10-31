@@ -11,6 +11,8 @@ class Inventory:
         ----------
         path : str
             Full path to file
+        type : str
+            If its going to generate a Simple or Completed report
         Returns
         -------
         list
