@@ -1,9 +1,8 @@
-from abc import ABC, abstractmethod
 from collections import Counter
 from inventory_report.utils import nearest
 
 
-class SimpleReport(ABC):
+class SimpleReport():
     @classmethod
     def __filterData(cls, reports):
         oldest_date = "3000-12-31"
@@ -26,7 +25,6 @@ class SimpleReport(ABC):
         )
 
     @classmethod
-    @abstractmethod
     def generate(cls, reports):
         result = cls.__filterData(reports)
         oldest_date = result["oldest_date"]
