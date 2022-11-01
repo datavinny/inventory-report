@@ -1,7 +1,5 @@
 from inventory_report.importer.importer import Importer
 import csv
-from inventory_report.reports.simple_report import SimpleReport
-from inventory_report.reports.complete_report import CompleteReport
 
 
 class CsvImporter(Importer):
@@ -20,8 +18,4 @@ class CsvImporter(Importer):
             List of rows as dicts
         """
         with open(path, encoding="utf-8") as file:
-            reports = list(csv.DictReader(file, delimiter=",", quotechar='"'))
-            if type == "simples":
-                return SimpleReport().generate(reports)
-            elif type == "completo":
-                return CompleteReport().generate(reports)
+            return list(csv.DictReader(file, delimiter=",", quotechar='"'))
